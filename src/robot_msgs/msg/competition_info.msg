@@ -1,0 +1,11 @@
+uint8 game_state
+uint16 our_outpost_hp
+uint16 enemy_outpost_hp
+uint16 remain_bullet
+uint16 enemy_sentry_hp
+uint16 our_sentry_hp
+uint16 our_base_hp
+uint8 first_blood
+float32 target_position_x
+float32 target_position_y
+int8 is_target_active

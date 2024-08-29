@@ -1,0 +1,5 @@
+<launch>
+    <node name="decetion_node_baoshou" pkg="sentry_navigation" type="decetion_node_baoshou" output="screen">
+        <rosparam file="$(find sentry_navigation)/config/decision.yaml" command="load" />
+    </node>
+</launch>

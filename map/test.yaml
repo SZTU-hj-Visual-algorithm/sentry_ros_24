@@ -1,0 +1,7 @@
+image: /home/hj/sentry_ros_3d/map/test.pgm
+resolution: 0.050000
+origin: [-20.900000, -4.600000, -nan]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.196
+

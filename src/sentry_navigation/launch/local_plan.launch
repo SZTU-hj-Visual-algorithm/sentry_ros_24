@@ -1,0 +1,20 @@
+<launch>
+      <!-- Run the local trajectory planner -->
+    <node pkg="sentry_navigation" type="chassis_move" name="chassis_move" respawn="true" output="screen" >
+        <param name="global_frame" value="map"/>
+        <param name="plan_frequency" value="60"/>
+        <param name="max_x_speed" value="4"/>
+        <param name="max_y_speed" value="4"/>
+        <param name="set_yaw_speed" value="3"/>
+        <param name="goal_dist_tolerance" value="0.35"/>
+        <param name="prune_ahead_distance" value="1.5"/>
+
+        <param name="follow_ahead_dist" value="0.45"/>
+        <param name="speed_y_adjust" value="1.5"/>
+        <param name="speed_x_adjust" value="1.5"/>
+        <param name="p_value" value="1"/>
+        <param name="i_value" value="0.0"/>
+        <param name="d_value" value="0.01"/>
+        
+    </node>
+</launch>

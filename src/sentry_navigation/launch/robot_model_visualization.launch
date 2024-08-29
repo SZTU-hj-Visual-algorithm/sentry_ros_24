@@ -1,0 +1,14 @@
+<launch>
+  <!-- <node pkg="tf" type="static_transform_publisher" name="aft_map_to_laser" args="0 0 0 0 0 3.14 aft_mapped livox_frame_true 100" /> -->
+  <node pkg="tf" type="static_transform_publisher" name="aft_map_to_laser_t" args="0 0 0.66 0 0 0 base_footprint livox_frame 100" />
+  <node pkg="tf" type="static_transform_publisher" name="laser_to_base" args="0 0 -0.33 0 0 3.14 livox_frame base_link 100" />
+
+  <param name = "robot_description" textfile = "$(find sentry_navigation)/urdf/mini_mec_robot.urdf"/> 
+  <!-- 读取urdf信息(robot_description) 发布话题：/joint_states-->
+  <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
+  <!-- 订阅话题：/joint_states，发布小车TF信息-->
+  <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+ </launch>
+
+

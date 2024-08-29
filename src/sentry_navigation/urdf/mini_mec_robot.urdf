@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<robot name="wheeltec_robot">
+
+    <link name="base_link">
+        <visual>
+            <origin xyz=" 0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.27 0.185 0.095"/>
+            </geometry>
+            <material name="white">
+                <color rgba="1 1 1 1"/>
+            </material>
+        </visual>
+    </link>   
+
+    <joint name="left_gimbal_joint" type="continuous">
+        <origin xyz="0.0 0.146 0.2832" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="left_gimbal_link"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="left_gimbal_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0375" length = "0.03"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="right_gimbal_joint" type="continuous">
+        <origin xyz="0.0 -0.146 0.2832" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="right_gimbal_link"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="right_gimbal_link">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <cylinder radius="0.0375" length = "0.03"/>
+            </geometry>
+            <material name="black">
+                <color rgba="0 0 0 1"/>
+            </material>
+        </visual>
+    </link>
+
+    <joint name="camer_front_joint" type="continuous">
+        <origin xyz="0.243 0 0.163" rpy="0 0 0"/>
+        <parent link="base_link"/>
+        <child link="camer_front_link"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="camer_front_link">
+    </link>
+
+    <joint name="camer_beside1_joint" type="continuous">
+        <origin xyz="-0.121 0.2154 0.163" rpy="0 0 2.094"/>
+        <parent link="base_link"/>
+        <child link="camer_beside1_link"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="camer_beside1_link">
+    </link>
+
+    <joint name="camer_beside2_joint" type="continuous">
+        <origin xyz="-0.121 -0.2154 0.163" rpy="0 0 -2.094"/>
+        <parent link="base_link"/>
+        <child link="camer_beside2_link"/>
+        <axis xyz="0 0 1"/>
+    </joint>
+
+    <link name="camer_beside2_link">
+    </link>
+
+
+
+</robot>

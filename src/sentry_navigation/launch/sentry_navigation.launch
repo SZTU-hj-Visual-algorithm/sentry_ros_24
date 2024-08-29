@@ -1,0 +1,37 @@
+<launch>
+  <include file="$(find simple_robot)/launch/robot.launch"/>
+  <node pkg="livox_to_pointcloud2" type="livox_to_pointcloud2_node" name="livox_to_pointcloud2_node" output="screen" >
+    <remap from="/livox/lidar" to="/livox/lidar_192_168_1_3" />
+  </node>
+   <include file="$(find sentry_navigation)/launch/robot_model_visualization.launch"/>
+
+
+  <node name='pointcloud_filter' pkg="sentry_navigation" type="pointcloud2_filter"/>
+  <!-- <node name='fake_baselink' pkg="sentry_navigation" type="fake_baselink" respawn="true" output="screen"/> -->
+  
+  <node pkg="tf" type="static_transform_publisher" name="map_red_to_camera_init" args="0 0 0.66 0 0 0 map camera_init 100" />   
+  <!-- <node pkg="tf" type="static_transform_publisher" name="map_blue_to_camera_init" args="21.8 8.1 0 1.57 0 0 map camera_init 100" />    -->
+    <!-- <node pkg="tf" type="static_transform_publisher" name="map_test_to_camera_init" args="0 0 0 -1.57 0 0 map camera_init 100" />    -->
+  <include file="$(find point_lio)/launch/mapping_mid360.launch"/>
+  <include file="$(find linefit_ground_segmentation_ros)/launch/segmentation.launch"/>
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find sentry_navigation)/rviz/amcl3d.rviz" /> 
+
+  <node name='odom_trans' pkg="sentry_navigation" type="odom_transform"/>
+  <!-- <node name='vision_transform' pkg="sentry_navigation" type="vision_transform"/> -->
+  <!-- <node name='enemy_position' pkg="sentry_navigation" type="enemy_position"/> -->
+
+    <!-- 设置需要用于导航的地图 -->
+  <arg name="map_file" default="$(env HOME)/sentry_ros_24/map/RMUC2024.yaml"/>  
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)">
+  <param name="frame_id" value="map" />
+  </node> 
+  
+  <include file="$(find sentry_navigation)/launch/move_base.launch"/>
+  <include file="$(find sentry_navigation)/launch/local_plan.launch"/>
+  <include file="$(find sentry_navigation)/launch/decision_node_gcl.launch"/>
+  <include file="$(find robot_detection)/launch/RM_Detection_L.launch"/>
+  <!-- <node name="fake_baselink"> -->
+  <!-- <include file="$(find livox_dedistortion_pkg)/launch/run.launch"/> -->
+
+  <!-- <node name='mbf_goal_bridge' pkg="sentry_navigation" type="mbf_action_bridge" output="screen" respawn="true"/> -->
+</launch>

@@ -1,0 +1,4 @@
+Symlinking /home/hj/sentry_ros_24/devel/lib/liblinefit_ground_segmentation.so
+Symlinking /home/hj/sentry_ros_24/devel/lib/pkgconfig/linefit_ground_segmentation.pc
+Symlinking /home/hj/sentry_ros_24/devel/share/linefit_ground_segmentation/cmake/linefit_ground_segmentationConfig.cmake
+Symlinking /home/hj/sentry_ros_24/devel/share/linefit_ground_segmentation/cmake/linefit_ground_segmentationConfig-version.cmake

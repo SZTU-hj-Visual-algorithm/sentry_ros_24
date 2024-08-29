@@ -1,0 +1,6 @@
+<launch>
+<node pkg="sentry_navigation" type="pointCloudMix_node" name="pointCloudMix_node" output="screen" />
+  <node pkg="livox_to_pointcloud2" type="livox_to_pointcloud2_node" name="livox_to_pointcloud2_node" output="screen" >
+    <remap from="/livox/lidar" to="/livox/lidar_merge" />
+  </node>
+</launch>

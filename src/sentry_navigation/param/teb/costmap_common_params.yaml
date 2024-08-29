@@ -1,0 +1,38 @@
+robot_radius: 0.3
+plugins:
+    - {name: static_layer,    type: "costmap_2d::StaticLayer"}
+    - {name: obstacle_layer,  type: "costmap_2d::ObstacleLayer"}
+    - {name: inflation_layer, type: "costmap_2d::InflationLayer"} 
+
+# should be declared after the above declaration for plugins 
+obstacle_layer: 
+  enabled: false
+  combination_method: 1
+  track_unknown_space: true
+  obstacle_range: 1 
+  raytrace_range: 1
+  min_obstacle_height: -0.5
+  observation_sources: 3dscan
+  topic: livox_pcl_filter
+  observation_persistence: 0.0
+  3dscan: { sensor_frame: livox_frame, data_type: PointCloud2, topic: ground_segmentation/obstacle_cloud, obstacle_range: 5.0, raytrace_range: 5.0,observation_persistence: 0.0, marking: true, clearing: true,  min_obstacle_height: 0.3, max_obstacle_height: 1 }
+
+
+inflation_layer:
+  observation_sources: 3dscan
+  enabled:              true
+  cost_scaling_factor:  1.1  # exponential rate at which the obstacle cost drops off (default: 10)
+  inflation_radius:     0.6  # max. distance from an obstacle at which costs are incurred for planning paths.
+  3dscan: 
+    observation_persistence: 0.0
+    raytrace_range: 30
+
+static_layer: 
+  enabled: true
+  map_topic:            "/map"
+  
+resolution: 0.05
+update_frequency: 30
+publish_frequency: 30
+
+

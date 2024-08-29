@@ -1,0 +1,6 @@
+[ 50%] [32mBuilding CXX object CMakeFiles/ground_segmentation_test_node.dir/src/ground_segmentation_test_node.cc.o[0m
+[ 50%] [32mBuilding CXX object CMakeFiles/ground_segmentation_node.dir/src/ground_segmentation_node.cc.o[0m
+[ 75%] [32m[1mLinking CXX executable /home/hj/sentry_ros_24/devel/.private/linefit_ground_segmentation_ros/lib/linefit_ground_segmentation_ros/ground_segmentation_test_node[0m
+[ 75%] Built target ground_segmentation_test_node
+[100%] [32m[1mLinking CXX executable /home/hj/sentry_ros_24/devel/.private/linefit_ground_segmentation_ros/lib/linefit_ground_segmentation_ros/ground_segmentation_node[0m
+[100%] Built target ground_segmentation_node
